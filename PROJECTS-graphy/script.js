@@ -7,8 +7,14 @@ window.addEventListener("load",function(){
 
 	var canvas = document.querySelector("#Canvas");
 	var context = canvas.getContext("2d");
+    var valueArray = [];
 
-    var graph = new Graph(450,420,350,260,177,0,context);
 
-    graph.DrawGraph();
+
+    var dataArray = [100,200,300,400,500,60,70,80,90];
+
+
+
+    var graph = new Graph(dataArray,9);
+
 });

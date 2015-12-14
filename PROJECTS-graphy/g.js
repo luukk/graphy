@@ -1,40 +1,53 @@
-function Graph(c1,c2,c3,c4,c5,c6,ctx){
-    this.cord1 = 500 - c1;
-    this.cord2 = 500 - c2;
-    this.cord3 = 500 - c3;
-    this.cord4 = 500 - c4;
-    this.cord5 = 500 - c5;
-    this.cord6 = 500 - c6;
+function Graph(dataSet, nodesPerScreen){
+    var canvas = document.querySelector("#Canvas");
+    var ctx    = canvas.getContext("2d");
+    var graphSpaceWidth = canvas.width;
+    var graphSpaceHeight = canvas.height;
 
-    var xpointers = {
-        x0 : 0,
-        x1 : 100,
-        x2 : 200,
-        x3 : 300,
-        x4 : 400,
-        x5 : 500,
+
+    this.nodeDataArray = [];
+
+    for(var i = 0; i < dataSet.length; i++){
+        this.nodeData = {
+
+            value : dataSet[i],
+
+            x : graphSpaceWidth / nodesPerScreen * i,
+
+            y : graphSpaceHeight - dataSet[i]
+        }
+
+        this.nodeDataArray.push(this.nodeData);
+
     }
 
 
-    this.DrawGraph = function(){
+
+
+
+
+
+        console.log(this.nodeDataArray);
+        console.log(this.nodeDataArray.length);
+
         ctx.beginPath();
-        ctx.moveTo(xpointers.x0, this.cord1);
-        ctx.lineTo(xpointers.x1, this.cord2);
 
-        ctx.moveTo(xpointers.x1, this.cord2);
-        ctx.lineTo(xpointers.x2, this.cord3);
+        for(var i = 0; i < this.nodeDataArray.length; i++){
 
-        ctx.moveTo(xpointers.x2, this.cord3);
-        ctx.lineTo(xpointers.x3, this.cord4);
 
-        ctx.moveTo(xpointers.x3, this.cord4);
-        ctx.lineTo(xpointers.x4, this.cord5);
+            ctx.moveTo(this.nodeDataArray[i].x, this.nodeDataArray[i].y);
 
-        ctx.moveTo(xpointers.x4, this.cord5);
-        ctx.lineTo(xpointers.x5, this.cord6);
+            //console.log("movedTo : x : " + this.nodeDataArray[i].x + " : y : "+ this.nodeDataArray[i].y);
 
-        ctx.stroke();
-    }
+            ctx.lineTo(this.nodeDataArray[i+1].x, this.nodeDataArray[i+1].y);
+
+           // console.log("drewTo : y : " + this.nodeDataArray[i+1].x + " : y : "  + this.nodeDataArray[i+1].y);
+
+            ctx.stroke();
+        }
+
+
+
 
 
 
