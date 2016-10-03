@@ -21,12 +21,6 @@ function Graph(dataSet, nodesPerScreen){
 
     }
 
-
-
-
-
-
-
         console.log(this.nodeDataArray);
         console.log(this.nodeDataArray.length);
 
